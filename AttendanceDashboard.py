@@ -58,7 +58,7 @@ class AttendanceDashboard(QMainWindow):
         left_layout = QVBoxLayout()
         
         self.camera_label = QLabel("Initializing Camera...")
-        self.camera_label.setFixedSize(1000, 475) 
+        self.camera_label.setFixedSize(930, 475) 
         self.camera_label.setStyleSheet("border: 2px solid #333; background-color: #000; border-radius: 10px;")
         self.camera_label.setAlignment(Qt.AlignCenter)
         
@@ -70,18 +70,25 @@ class AttendanceDashboard(QMainWindow):
         self.reg_btn.clicked.connect(self.open_registration_page)
         self.reg_btn.setMinimumHeight(60) # 
         self.reg_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #2196F3; 
-                color: white; 
-                font-size: 20px; 
-                font-weight: bold; 
-                border-radius: 10px;
-                padding: 10px;
+        QPushButton {
+        background-color: #1e1e1e; 
+        color: white; 
+        font-size: 20px; 
+        font-weight: bold; 
+        border: 2px solid #3498db; 
+        border-radius: 10px;
+        padding: 10px;
             }
-            QPushButton:hover {
-                background-color: #1976D2;
+
+        QPushButton:hover {
+        background-color: #2d2d2d;
+        border: 2px solid #3498db; 
             }
-        """)
+
+        QPushButton:pressed {
+        background-color: #121212;
+            }
+            """)
 
         left_layout.addWidget(self.camera_label)
         left_layout.addWidget(self.status_label)
@@ -169,18 +176,25 @@ class AttendanceDashboard(QMainWindow):
         right_layout.addWidget(self.refresh_btn)
         self.refresh_btn.setMinimumHeight(60)
         self.refresh_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #4CAF50; 
-                color: white; 
-                font-size: 20px; 
-                font-weight: bold; 
-                border-radius: 10px;
-                padding: 10px;
+        QPushButton {
+        background-color: #1e1e1e; 
+        color: white; 
+        font-size: 20px; 
+        font-weight: bold; 
+        border: 2px solid #3498db; 
+        border-radius: 10px;
+        padding: 10px;
             }
-            QPushButton:hover {
-                background-color: #388E3C;
+
+        QPushButton:hover {
+        background-color: #2d2d2d;
+        border: 2px solid #3498db; 
             }
-        """)
+
+        QPushButton:pressed {
+        background-color: #121212;
+            }
+            """)
 
         layout.addLayout(left_layout, stretch=1)
         layout.addLayout(right_layout, stretch=1)
