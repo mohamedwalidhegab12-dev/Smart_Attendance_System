@@ -108,9 +108,29 @@ class RegistrationApp(QWidget):
         
         common_btn_style = "padding: 15px; font-size: 16px; font-weight: bold; border-radius: 10px; min-width: 180px;"
         
-        self.capture_btn.setStyleSheet(common_btn_style + "background-color: #3498db; color: white;")
-        self.register_btn.setStyleSheet(common_btn_style + "background-color: #2ecc71; color: white;")
-        self.cancel_btn.setStyleSheet(common_btn_style + "background-color: #e74c3c; color: white;")
+        # Capture Button (Blue Border)
+        self.capture_btn.setStyleSheet(common_btn_style + """
+            background-color: #1e1e1e; 
+            color: white; 
+            border: 2px solid #3498db;
+            font-size: 18px;
+        """)
+
+        # Register Button (Green Border)
+        self.register_btn.setStyleSheet(common_btn_style + """
+            background-color: #1e1e1e; 
+            color: white; 
+            border: 2px solid #2ecc71;
+            font-size: 18px;
+        """)
+
+        # Cancel Button (Red Border)
+        self.cancel_btn.setStyleSheet(common_btn_style + """
+            background-color: #1e1e1e; 
+            color: white; 
+            border: 2px solid #e74c3c;
+            font-size: 18px;
+        """)
 
         buttons_layout.addStretch()
         buttons_layout.addWidget(self.capture_btn)
