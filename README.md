@@ -13,11 +13,11 @@
 
 ### 1. Seamless Recognition
 As soon as a student is detected, the system locks on their face and instantly records their presence in the attendance log.
-![Main Interface](Screenshot%202026-04-19%20123501.jpg)
+![Main Interface]("C:\Users\WELO\Pictures\Screenshots\Screenshot 2026-04-19 123501.png")
 
 ### 2. Smart Validation Logic
 The system is "context-aware"—it knows if a student has already checked in and prevents duplicate entries with clear visual feedback.
-![Validation Feedback](Screenshot%202026-04-19%20123558.jpg)
+![Validation Feedback]("C:\Users\WELO\Pictures\Screenshots\Screenshot 2026-04-19 123558.png")
 
 ---
 
