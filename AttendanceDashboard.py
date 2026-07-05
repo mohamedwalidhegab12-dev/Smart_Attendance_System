@@ -45,7 +45,7 @@ class AttendanceDashboard(QMainWindow):
 
         self.monitor_timer = QTimer()
         self.monitor_timer.timeout.connect(self.time_monitoring_logic)
-        self.monitor_timer.start(1000)
+        self.monitor_timer.start(3000)
 
     def init_ui(self):
         self.setCentralWidget(self.stacked_widget)
@@ -215,18 +215,19 @@ class AttendanceDashboard(QMainWindow):
         self.start_camera_thread()
 
     def time_monitoring_logic(self):
-        now = datetime.now()
-        if now.minute == 0 and now.second == 0 and now.hour != self.last_checked_hour or self.last_checked_hour == -1:
-            self.sync_system_state()
+        latest_lecture = fetch_lecture_from_db()
+        if latest_lecture != self.current_lecture or self.last_checked_hour == -1:
+            print(f"Lecture state changed! Syncing... Old: {self.current_lecture}, New: {latest_lecture}")
+            self.current_lecture = latest_lecture 
+            self.sync_system_state(latest_lecture)
 
-    def sync_system_state(self):
-        self.current_lecture = fetch_lecture_from_db()
+    def sync_system_state(self,latest_lecture):
         self.last_checked_hour = datetime.now().hour
         self.update_daily_schedule_view()
         self.refresh_attendance_table() 
 
-        if self.current_lecture:
-            self.lecture_id, self.lecture_name = self.current_lecture
+        if latest_lecture:
+            self.lecture_id, self.lecture_name = latest_lecture
             self.status_label.setText(f"Active Now: {self.lecture_name}")
             self.status_label.setStyleSheet("font-size: 24px; font-weight: bold; color: #4CAF50;")
             self.start_camera_thread()
