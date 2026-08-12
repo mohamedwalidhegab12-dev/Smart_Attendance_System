@@ -1,341 +1,448 @@
-🎓 SmartGate — Advanced AI Attendance System
+<div align="center">🎓 SmartGate
 
-«A real-time AI-powered attendance management system that uses facial recognition to automate student attendance in academic environments.»
+Advanced AI-Powered Attendance System
 
-"Python" (https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
-"PyQt5" (https://img.shields.io/badge/GUI-PyQt5-green)
-"DeepFace" (https://img.shields.io/badge/AI-DeepFace-orange)
-"ArcFace" (https://img.shields.io/badge/Face%20Recognition-ArcFace-purple)
-"OpenCV" (https://img.shields.io/badge/Computer%20Vision-OpenCV-red)
-"SQLite" (https://img.shields.io/badge/Database-SQLite-lightgrey)
-"Status" (https://img.shields.io/badge/Status-Completed-brightgreen)
+Automating academic attendance through real-time facial recognition, intelligent lecture scheduling, and a desktop management dashboard.
 
----
+<br><p>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/DeepFace-AI-FF6F00?style=for-the-badge">
+  <img src="https://img.shields.io/badge/ArcFace-Face%20Recognition-6C5CE7?style=for-the-badge">
+  <img src="https://img.shields.io/badge/OpenCV-Computer%20Vision-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white">
+</p><p>
+  <img src="https://img.shields.io/badge/PyQt5-Desktop%20GUI-41CD52?style=for-the-badge&logo=qt&logoColor=white">
+  <img src="https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+  <img src="https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?style=for-the-badge&logo=numpy&logoColor=white">
+</p><br><a href="https://github.com/mohamedwalidhegab12-dev/Smart_Attendance_System">
+  <img src="https://img.shields.io/badge/🚀%20View%20Repository-GitHub-181717?style=for-the-badge&logo=github">
+</a></div>---
 
-📌 Overview
+🧠 What is SmartGate?
 
-SmartGate is an AI-powered attendance system designed to automate the process of recording student attendance using real-time face recognition.
+SmartGate is a real-time AI attendance management system built to automate student attendance in academic environments.
 
-Instead of relying on manual attendance or traditional ID-based check-ins, the system captures a student's face through a camera, extracts a facial embedding using ArcFace, compares it against registered students, identifies the student, and records the attendance in a local SQLite database.
+The system combines Computer Vision, Face Recognition, Deep Learning, Database Management, and Desktop GUI development into one integrated application.
 
-The system also integrates the academic schedule to determine the currently active lecture and provides a real-time desktop dashboard for monitoring attendance.
+Instead of manually checking attendance, SmartGate can:
 
----
+«Detect → Represent → Recognize → Verify → Record»
 
-🎯 Project Objectives
-
-- Automate student attendance using facial recognition.
-- Reduce manual attendance-taking effort.
-- Identify registered students from live camera input.
-- Prevent duplicate attendance for the same lecture and day.
-- Connect attendance records with the academic schedule.
-- Provide a simple real-time interface for monitoring attendance.
-- Store student and attendance information in a structured database.
+all while connecting the recognition process to the currently active lecture.
 
 ---
 
-✨ Key Features
+<div align="center">📸 Application Preview
 
-👤 Student Registration
+<br><img src="./images/demo1.png" width="850"><br><br>
 
-Students can be registered through a dedicated PyQt5 interface.
+<img src="./images/demo2.png" width="850"></div>---
 
-The registration process collects:
+✨ Core Capabilities
 
-- Full Name
-- Student ID
-- Academic Level
-- Department
-- Email Address
-- Face Image
+<table>
+<tr>
+<td width="50%">🎥 Real-Time Recognition
 
-Before registration, the system validates the provided information and checks whether the email or face already exists in the database.
+- Live camera processing
+- OpenCV image acquisition
+- Face detection
+- ArcFace embeddings
+- Real-time identity matching
 
-A facial embedding is generated from the captured image and stored with the student's information.
+</td><td width="50%">📝 Smart Registration
 
----
+- Student registration
+- Live camera capture
+- Student information validation
+- Face embedding generation
+- Duplicate face detection
 
-🧠 AI Face Recognition
+</td>
+</tr><tr>
+<td width="50%">📚 Lecture Awareness
 
-SmartGate uses DeepFace with the ArcFace model to generate facial embeddings from camera frames.
+- Reads the academic schedule
+- Detects the active lecture
+- Automatically starts attendance monitoring
+- Displays today's complete schedule
 
-The system:
+</td><td width="50%">📊 Attendance Management
 
-1. Captures a frame from the camera.
-2. Converts the image into the required format.
-3. Detects and aligns the face.
-4. Generates an ArcFace facial embedding.
-5. Compares the embedding with registered students.
-6. Selects the closest valid match based on cosine distance.
+- Automatic attendance marking
+- Student ID tracking
+- Lecture tracking
+- Check-in time
+- Duplicate attendance handling
 
-The current implementation uses a configurable matching threshold of "0.4".
+</td>
+</tr><tr>
+<td width="50%">🖥️ Desktop Dashboard
 
----
-
-📸 Real-Time Camera Processing
-
-The application uses OpenCV for camera input and real-time frame processing.
-
-Camera processing is integrated with the PyQt5 interface through a dedicated camera thread, allowing the dashboard to display the live camera feed while handling attendance events.
-
----
-
-📚 Automatic Lecture Detection
-
-SmartGate automatically checks the current day and time against the stored academic schedule.
-
-If the current time falls within a scheduled lecture, that lecture becomes the active lecture for attendance.
-
-The dashboard then displays the active course and starts the attendance monitoring process.
-
----
-
-✅ Automatic Attendance Marking
-
-After successfully recognizing a registered student, the system records:
-
-- Student ID
-- Student Name
-- Lecture ID
-- Lecture Name
-- Academic Level
-- Department
-- Check-in Time
-- Attendance Date
-
-The system also handles duplicate attendance attempts and prevents the same student from being checked in again for the same lecture/day.
-
----
-
-📊 Real-Time Dashboard
-
-The PyQt5 dashboard provides:
-
+- PyQt5 interface
 - Live camera feed
-- Current system status
-- Active lecture information
-- Current lecture attendance table
-- Today's complete lecture schedule
-- Successful attendance notifications
-- Duplicate attendance notifications
-- Student registration interface
+- Attendance table
+- Schedule table
+- System status
 - Manual synchronization
 
-The dashboard automatically refreshes its attendance and schedule information as the system state changes.
+</td><td width="50%">🗄️ Local Data Layer
 
----
+- SQLite database
+- Student records
+- Facial embeddings
+- Lecture schedules
+- Attendance records
+
+</td>
+</tr>
+</table>---
 
 🏗️ System Architecture
 
-                    ┌───────────────────┐
-                    │   Camera Input    │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │   OpenCV Frames   │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ Face Detection &  │
-                    │     Alignment     │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ ArcFace Embedding │
-                    │   via DeepFace    │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ Face Comparison   │
-                    │ Cosine Distance   │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                 ┌─────────────────────────┐
-                 │ Student Identification  │
-                 └────────────┬────────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ Active Lecture    │
-                    │  & Schedule Check │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ SQLite Database   │
-                    │  Attendance Logs  │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │  PyQt5 Dashboard  │
-                    └───────────────────┘
+<div align="center">flowchart TD
+
+    A["📷 Camera Input"]
+    B["👁️ Face Detection<br/>OpenCV"]
+    C["🧠 ArcFace Embedding<br/>DeepFace"]
+    D["🔎 Face Comparison<br/>Cosine Distance"]
+    E["👤 Student Identification"]
+    F["📚 Active Lecture<br/>Schedule Check"]
+    G["✅ Attendance Validation"]
+    H[("🗄️ SQLite Database")]
+    I["🖥️ PyQt5 Dashboard"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+
+
+</div>---
+
+🔄 How Attendance Works
+
+01 — Camera Capture
+
+The system receives frames from the connected camera using OpenCV.
+
+02 — Face Detection
+
+The current frame is processed and the face is prepared for recognition.
+
+03 — Feature Extraction
+
+DeepFace generates an ArcFace facial embedding from the detected face.
+
+04 — Identity Matching
+
+The generated embedding is compared against registered student embeddings using cosine distance.
+
+The current implementation accepts a match when the distance is below the configured threshold of 0.4.
+
+05 — Lecture Verification
+
+The application checks the database schedule and identifies the lecture currently taking place.
+
+06 — Attendance Recording
+
+After successful identification, the student's attendance is recorded in the SQLite database.
+
+07 — Dashboard Update
+
+The PyQt5 dashboard immediately updates the attendance table and provides visual feedback.
 
 ---
 
-🧩 Technologies & Tools
+🧩 Technology Stack
 
-Technology| Purpose
-Python| Core application development
-DeepFace| Facial representation and recognition pipeline
-ArcFace| Face embedding generation
-OpenCV| Camera access and image processing
-NumPy| Numerical operations and vector processing
-PyQt5| Desktop GUI
-SQLite| Student, schedule, and attendance storage
-Pickle| Serialization of facial embeddings
-TensorFlow| Backend used by the DeepFace/ArcFace pipeline
-
----
-
-🗄️ Database Structure
-
-The application uses a local SQLite database named:
-
-University.db
-
-The system contains dedicated database components for:
-
-Students
-
-Stores student information and facial embeddings.
-
-Students
-├── Name
-├── ID
-├── Level
-├── Department
-├── Email
-└── Embedding
-
-Schedule
-
-Stores lecture scheduling information used to determine the active lecture.
-
-Schedule
-├── ID
-├── Course
-├── Day
-├── Start Time
-└── End Time
-
-Attendees
-
-Stores attendance records generated by the recognition system.
-
-Attendees
-├── Student ID
-├── Lecture ID
-├── Lecture Name
-├── Name
-├── Level
-├── Department
-├── Check-in Time
-└── Attendance Date
-
-Database initialization is handled through dedicated database modules and "DB_Setup.py".
+Technology| Role
+🐍 Python| Core application logic
+🧠 DeepFace| Facial representation pipeline
+🎯 ArcFace| Facial embedding model
+👁️ OpenCV| Camera input & computer vision
+🔢 NumPy| Vector and numerical operations
+🖥️ PyQt5| Desktop graphical interface
+🗄️ SQLite| Persistent application database
+📦 Pickle| Facial embedding serialization
+⚡ TensorFlow| Deep learning backend
 
 ---
 
-🔄 Attendance Workflow
-
-Start Application
-       │
-       ▼
-Check Current Schedule
-       │
-       ▼
-Is There an Active Lecture?
-       │
-   ┌───┴───┐
-   │       │
-  No      Yes
-   │       │
-   ▼       ▼
-Wait    Start Camera
-           │
-           ▼
-      Capture Frame
-           │
-           ▼
-      Detect Face
-           │
-           ▼
-    Generate ArcFace
-       Embedding
-           │
-           ▼
- Compare With Students
-       Database
-           │
-      ┌────┴────┐
-      │         │
-   Match      No Match
-      │         │
-      ▼         ▼
-Check Duplicate   Ignore
-      │
-  ┌───┴────┐
-  │        │
-New       Already
-Entry     Marked
-  │        │
-  ▼        ▼
-Record    Notify
-Attendance User
-
----
-
-📁 Project Structure
+🗂️ Project Architecture
 
 Smart_Attendance_System/
 │
-├── AttendanceDashboard.py
-├── Register.py
-├── Mark_attendance.py
-├── Compare_with_database.py
-├── Embedding_pic.py
-├── cameraThread.py
+├── 📊 AttendanceDashboard.py
+│   └── Main PyQt5 dashboard
 │
-├── Fetch_lecture.py
-├── Dashboard_data.py
-├── Data_Model.py
+├── 👤 Register.py
+│   └── Student registration interface
 │
-├── DB_Setup.py
-├── DB_Students.py
-├── DB_Attendees.py
-├── DB_Schedule.py
+├── 🎥 cameraThread.py
+│   └── Real-time camera processing
+│
+├── 🧠 Embedding_pic.py
+│   └── ArcFace embedding extraction
+│
+├── 🔎 Compare_with_database.py
+│   └── Facial embedding comparison
+│
+├── ✅ Mark_attendance.py
+│   └── Attendance recording
+│
+├── 📚 Fetch_lecture.py
+│   └── Active lecture & schedule logic
+│
+├── 📊 Dashboard_data.py
+│   └── Dashboard attendance data
+│
+├── 🧱 Data_Model.py
+│   └── Data structures
+│
+├── 🗄️ DB_Setup.py
+│   └── Database initialization
+│
+├── 👨‍🎓 DB_Students.py
+│   └── Student database operations
+│
+├── 📝 DB_Attendees.py
+│   └── Attendance database operations
+│
+├── 📅 DB_Schedule.py
+│   └── Schedule database operations
+│
+├── 🎨 Dark_Mood.py
+│   └── Application styling
+│
+├── 🖼️ images/
+│   ├── demo1.png
+│   ├── demo2.png
+│   └── student images
+│
+├── 🗃️ University.db
+│   └── SQLite database
+│
 ├── SQL_command.sql
+│   └── SQL commands
 │
-├── Dark_Mood.py
-├── University.db
-│
-├── images/
-├── .gitignore
 └── README.md
 
 ---
 
-🚀 Installation
+🗄️ Data Layer
 
-1. Clone the Repository
+SmartGate uses SQLite through a local database named:
+
+University.db
+
+The database is responsible for managing the main application data.
+
+👨‍🎓 Students
+
+Stores student information and facial embeddings.
+
+Student
+├── ID
+├── Name
+├── Level
+├── Department
+├── Email
+└── Face Embedding
+
+📚 Schedule
+
+Provides lecture information used to determine the currently active lecture.
+
+Lecture
+├── ID
+├── Name
+├── Day
+├── Start Time
+└── End Time
+
+📝 Attendance
+
+Stores attendance events generated by the recognition pipeline.
+
+Attendance
+├── Student ID
+├── Lecture
+├── Student Name
+├── Level
+├── Department
+├── Date
+└── Check-in Time
+
+---
+
+👤 Student Registration
+
+SmartGate provides a dedicated registration interface.
+
+<div align="center">┌──────────────────────────────────────────────┐
+│              STUDENT REGISTRATION            │
+├──────────────────────────────────────────────┤
+│                                              │
+│  📷 Live Camera       👤 Student Information │
+│                                              │
+│                       Full Name              │
+│                       Student ID             │
+│                       Academic Level         │
+│                       Department             │
+│                       Email Address          │
+│                                              │
+├──────────────────────────────────────────────┤
+│     Take Photo  •  Register  •  Cancel       │
+└──────────────────────────────────────────────┘
+
+</div>The registration process includes:
+
+- Student information entry
+- Camera capture
+- Face embedding extraction
+- Duplicate email validation
+- Duplicate face validation
+- Database insertion
+
+---
+
+🔎 Face Recognition Pipeline
+
+                CAMERA FRAME
+                     │
+                     ▼
+             ┌───────────────┐
+             │ Face Detection│
+             └───────┬───────┘
+                     │
+                     ▼
+             ┌───────────────┐
+             │   DeepFace    │
+             │   + ArcFace   │
+             └───────┬───────┘
+                     │
+                     ▼
+              FACE EMBEDDING
+                     │
+                     ▼
+             ┌───────────────┐
+             │ SQLite Stored │
+             │  Embeddings   │
+             └───────┬───────┘
+                     │
+                     ▼
+             COSINE DISTANCE
+                     │
+                     ▼
+             ┌───────────────┐
+             │ Best Valid    │
+             │    Match      │
+             └───────┬───────┘
+                     │
+                     ▼
+               STUDENT ID
+
+---
+
+⏱️ Intelligent Lecture Detection
+
+SmartGate continuously monitors the current system time and compares it with the stored academic schedule.
+
+Current Time
+     │
+     ▼
+Read Today's Schedule
+     │
+     ▼
+Find Active Lecture
+     │
+ ┌───┴──────────────┐
+ │                  │
+ ▼                  ▼
+Lecture Found    No Lecture
+ │                  │
+ ▼                  ▼
+Start Camera      Camera Off
+ │
+ ▼
+Enable Attendance
+
+This allows the system to automatically transition between:
+
+No Active Lecture → Active Lecture → Attendance Monitoring
+
+without requiring the user to manually select a lecture.
+
+---
+
+🛡️ Attendance Validation
+
+SmartGate does not simply recognize a face and insert a row.
+
+The system also handles attendance state:
+
+✅ New Attendance
+
+A recognized student who has not yet been marked for the active lecture is recorded.
+
+🔁 Duplicate Attendance
+
+If the student has already been marked, the system prevents another attendance record and displays a notification.
+
+❌ Unknown Face
+
+If no valid student match is found under the configured recognition threshold, no attendance record is created.
+
+---
+
+🖥️ Dashboard
+
+The main dashboard provides a real-time view of the system.
+
+Left Panel
+
+- Live camera feed
+- Current system status
+- Attendance notifications
+- Student registration access
+
+Right Panel
+
+- Current lecture attendance
+- Student ID
+- Student name
+- Lecture
+- Check-in time
+- Today's schedule
+- Manual synchronization
+
+---
+
+🚀 Getting Started
+
+Prerequisites
+
+Make sure you have:
+
+- Python 3.10+
+- A working webcam
+- Windows/Linux/macOS environment
+- Git
+
+---
+
+1️⃣ Clone
 
 git clone https://github.com/mohamedwalidhegab12-dev/Smart_Attendance_System.git
-
-2. Navigate to the Project
-
 cd Smart_Attendance_System
 
-3. Create a Virtual Environment
+2️⃣ Create Virtual Environment
 
 python -m venv venv
-
-4. Activate the Environment
 
 Windows
 
@@ -345,9 +452,7 @@ Linux / macOS
 
 source venv/bin/activate
 
-5. Install Dependencies
-
-Install the required Python packages:
+3️⃣ Install Dependencies
 
 pip install opencv-python
 pip install deepface
@@ -355,165 +460,132 @@ pip install numpy
 pip install PyQt5
 pip install tensorflow
 
----
-
-▶️ Running the Application
-
-Initialize the database:
+4️⃣ Initialize the Database
 
 python DB_Setup.py
 
-Then start the main dashboard:
+5️⃣ Run SmartGate
 
 python AttendanceDashboard.py
 
-The application opens the main SmartGate dashboard where the system can monitor the current lecture, access the camera, recognize registered students, and record attendance.
+---
+
+🎬 Typical Usage
+
+Launch SmartGate
+      │
+      ▼
+Check Lecture Schedule
+      │
+      ▼
+Active Lecture?
+   │          │
+  YES         NO
+   │          │
+   ▼          ▼
+Camera ON   Wait
+   │
+   ▼
+Recognize Student
+   │
+   ▼
+Validate Attendance
+   │
+   ▼
+Save to Database
+   │
+   ▼
+Update Dashboard
 
 ---
 
-📝 Student Registration Flow
+🎯 Project Goals
 
-To register a new student:
+SmartGate was designed around four major goals:
 
-1. Open the SmartGate dashboard.
-2. Select Register New Student.
-3. Enter the student's information.
-4. Capture the student's face.
-5. The system extracts an ArcFace embedding.
-6. The system checks for duplicate email and face registration.
-7. If validation succeeds, the student is stored in the database.
-
-The registration module performs both database-level and face-level duplicate checks before inserting a new student.
+Goal| Approach
+⏱️ Reduce manual effort| Automate attendance
+👤 Identify students| Face recognition
+📚 Connect attendance to lectures| Schedule-aware logic
+📊 Centralize records| SQLite database + dashboard
 
 ---
 
-🔍 Face Matching
+🧪 Engineering Highlights
 
-Registered facial embeddings are stored in the SQLite database.
-
-For recognition, the current face embedding is compared against stored embeddings using cosine similarity/distance.
-
-The system keeps the closest valid match under the configured threshold.
-
-Current Face
-     │
-     ▼
-ArcFace Embedding
-     │
-     ▼
-Compare Against
-Stored Embeddings
-     │
-     ▼
-Cosine Distance
-     │
-     ▼
-Threshold Check
-     │
-     ▼
-Best Matching Student
-
----
-
-🖥️ User Interface
-
-The application uses PyQt5 to provide a desktop-based interface.
-
-The main dashboard includes:
-
-- Live camera display
-- Attendance table
-- Daily schedule
-- Active lecture status
-- Student registration
-- Synchronization controls
-- Attendance feedback
-
-The registration interface also includes camera capture and form validation.
-
----
-
-🔐 Data & Validation
-
-SmartGate includes several validation mechanisms:
-
-- Required student information validation
-- Gmail address validation
-- Duplicate email detection
-- Duplicate student face detection
-- Student ID database constraints
-- Lecture existence validation
-- Duplicate attendance handling
-
-These checks help maintain consistent student and attendance records.
-
----
-
-📈 Future Improvements
-
-Potential future enhancements include:
-
-- Advanced liveness / anti-spoofing mechanisms.
-- More robust recognition under difficult lighting conditions.
-- Cloud-based database integration.
-- Web-based administration dashboard.
-- Attendance reports and analytics.
-- Export attendance records to CSV/Excel.
-- Role-based authentication for administrators.
-- Support for multiple cameras.
-- Centralized university deployment.
-
----
-
-👨‍💻 Contributors
-
-Mohamed Walid
-
-AI & Data Science / Computer Science Student
-
-Malak Eldesouky
-
-Saif Gamal
-
-John Hady
-
-Fatma Gahlan
-
-Supervisor: Mohamed Eleraqy
-
----
-
-🎓 Academic Project
-
-This project was developed as an academic software and AI project focused on applying:
+This project demonstrates practical integration of multiple software and AI concepts:
 
 - Computer Vision
-- Facial Recognition
-- Deep Learning
-- Database Management
-- Desktop Application Development
-
-to solve a real-world problem in educational environments.
-
----
-
-⭐ Why SmartGate?
-
-Traditional attendance can be time-consuming, repetitive, and difficult to manage at scale.
-
-SmartGate combines AI-based face recognition, automated lecture detection, database management, and a real-time desktop interface into one integrated attendance solution.
-
-«Recognize. Verify. Record. Automatically.»
+- Face Recognition
+- Deep Learning inference
+- Facial embeddings
+- Vector similarity
+- Real-time camera processing
+- Multithreaded GUI processing
+- Database design
+- SQL operations
+- Desktop application development
+- Event-driven programming
+- Input validation
+- Application state management
 
 ---
 
-📄 License
+🔮 Roadmap
 
-This project is intended for educational and academic purposes.
+Future iterations could extend SmartGate with:
+
+- [ ] Advanced liveness / anti-spoofing
+- [ ] Attendance analytics
+- [ ] CSV / Excel reporting
+- [ ] Admin authentication
+- [ ] Cloud database support
+- [ ] Web-based dashboard
+- [ ] Multi-camera support
+- [ ] Centralized university deployment
+- [ ] Advanced recognition under challenging lighting conditions
 
 ---
 
-🔗 Repository
+👨‍💻 Team
 
-GitHub:
-https://github.com/mohamedwalidhegab12-dev/Smart_Attendance_System
+<div align="center">SmartGate Development Team
+
+Member| Role
+Mohamed Walid| AI / Software Development
+Malak Eldesouky| Team Member
+Saif Gamal| Team Member
+John Hady| Team Member
+Fatma Gahlan| Team Member
+
+<br>Supervisor
+
+Mohamed Eleraqy
+
+</div>---
+
+🎓 Academic Context
+
+SmartGate was developed as an academic project focused on applying Artificial Intelligence and Software Engineering to a real-world university problem.
+
+The project brings together:
+
+«AI + Computer Vision + Databases + Desktop Development»
+
+into a single practical system.
+
+---
+
+<div align="center">⭐ SmartGate
+
+Recognize. Verify. Record.
+
+An intelligent approach to academic attendance.
+
+<br><a href="https://github.com/mohamedwalidhegab12-dev/Smart_Attendance_System">
+  <img src="https://img.shields.io/badge/⭐%20Star%20the%20Repository-181717?style=for-the-badge&logo=github">
+</a><br><br>
+
+Built with Python • DeepFace • ArcFace • OpenCV • PyQt5 • SQLite
+
+</div>
